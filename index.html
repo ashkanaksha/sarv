@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarvin — Multiverse</title>
+<link rel="icon" href="media/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&family=Vazirmatn:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body data-section="0">
+<canvas id="gl"></canvas>
+
+<!-- floating 3D labels per section -->
+<div id="mvLabels" class="labels s2"></div>
+<div id="dotLabels" class="labels s3"></div>
+<div id="finLabels" class="labels s4"></div>
+
+<!-- persistent chrome -->
+<header class="top">
+  <img id="brandLogo" class="brand" alt="sarv">
+  <div class="top-actions">
+    <button id="btnSound" class="ic" aria-label="Sound (M)"></button>
+    <button id="btnFull" class="ic" aria-label="Fullscreen (F)"></button>
+  </div>
+</header>
+<footer class="bottom">
+  <nav id="sectionNav" class="sections" aria-label="Sections"></nav>
+  <div class="pager">
+    <button id="prevSec" class="ic" aria-label="Previous section"></button>
+    <button id="nextSec" class="ic" aria-label="Next section"></button>
+  </div>
+</footer>
+<div id="chapter" class="chapter"></div>
+<div id="hint" class="hint"></div>
+
+<!-- 01 -->
+<div class="layer s1">
+  <div id="introCap" class="caption"></div>
+  <button id="skipIntro" class="pill skip"></button>
+</div>
+
+<!-- 02 -->
+<div class="layer s2">
+  <div id="worldStage" class="stage"></div>
+  <ol id="mvRail" class="rail"></ol>
+  <aside id="worldPanel" class="panel"></aside>
+  <div id="zoomCtl" class="zoomctl">
+    <button id="zoomOut" class="zbtn" aria-label="Zoom out (−)"></button>
+    <button id="zoomIn" class="zbtn" aria-label="Zoom in (+)"></button>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="layer s3">
+  <div class="dots-tools">
+    <button id="btnStory" class="pill story-btn"></button>
+    <button id="btnAllEdges" class="pill"></button>
+    <button id="btnMatrix" class="pill"></button>
+  </div>
+  <aside id="dotPanel" class="panel dpanel"></aside>
+  <div id="storyCap" class="story"></div>
+</div>
+
+<!-- 04 -->
+<div class="layer s4">
+  <div id="finText" class="fin-text"></div>
+  <button id="btnReplay" class="pill replay"></button>
+  <a id="insta" class="insta" href="https://www.instagram.com/by.sarv/" target="_blank" rel="noopener">
+    <span id="instaQR" class="qr"></span>
+    <span class="handle"><span class="ig"></span><span>@by.sarv</span></span>
+  </a>
+</div>
+
+<div id="matrix" class="overlay matrix"></div>
+<div id="gallery" class="overlay gallery"></div>
+<div id="lightbox" class="overlay lightbox"></div>
+
+<!-- start screen -->
+<section id="start">
+  <img id="startLogo" class="start-logo" alt="sarv">
+  <div class="load"><span id="loadBar"></span></div>
+  <p id="loadState" class="mono small">loading worlds</p>
+  <button id="beginBtn" class="begin" disabled><span>Begin</span></button>
+  <p class="mono small hint-sound">sound on · <span class="fa" lang="fa">با صدا</span></p>
+</section>
+<div id="fade" class="on"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
