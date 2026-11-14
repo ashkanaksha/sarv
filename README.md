@@ -11,13 +11,14 @@ Built with [three.js](https://threejs.org) (loaded from a CDN, so an internet co
 
 ## Run locally
 
-Double-click `start.bat` (Windows, needs Python), or:
+Double-click `start.bat`. It works on any Windows 10/11 PC — no Python, no installation and
+no administrator rights (it starts a tiny local web server with the PowerShell that ships with Windows,
+`tools/serve.ps1`, and opens the browser). Keep its window open while presenting.
 
-```bash
-python tools/serve.py 8766
-```
+If Windows shows "Windows protected your PC" (files copied from another computer or a download),
+click **More info → Run anyway**. On other systems: `python tools/serve.py 8766` and open http://localhost:8766.
 
-then open http://localhost:8766.
+A minimal PowerPoint version can be generated with `python tools/build_pptx.py` (needs `python-pptx`).
 
 ## Controls
 

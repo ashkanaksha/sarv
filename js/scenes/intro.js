@@ -37,7 +37,7 @@ export default {
     this.steps = [];
     for (const s of INTRO) {
       const w = WORLDS.find(x => x.id === s.world);
-      const item = w.raw[s.item - 1];
+      const item = w.byName(s.item) || w.heroItem;
       const img = await loadImage(item.src);
       const [bw, bh] = box();
       this.steps.push({ ...s, data: sampleImage(img, N, bw, bh, { depth: 5, relief: true, bulge: 3.5, extrude: 0.04, gain: 1.3, jitter: 0.25 }) });

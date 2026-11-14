@@ -218,12 +218,12 @@ export default {
     // labels + rail
     this.labels = new Labels($('#mvLabels'));
     this.planets.forEach(p => {
-      p.label = this.labels.add(`<span class="n mono">${p.w.n}</span><span class="t">${p.w.en}</span>${fa(p.w.fa, 'f')}`, 'pl', () => this.enterWorld(p.i));
+      p.label = this.labels.add(`<span class="n mono">${p.w.n}</span><span class="t">${p.w.label}</span>${fa(p.w.labelFa, 'f')}`, 'pl', () => this.enterWorld(p.i));
     });
     this.linkLabels = this.links.map(l => this.labels.add(`${l.k}<span class="sep">·</span>${fa(l.kFa)}`, 'el'));
     const rail = $('#mvRail');
     this.planets.forEach(p => {
-      const li = el('li', '', `<button><span class="mono">${p.w.n}</span><span class="t">${p.w.en}</span></button>`);
+      const li = el('li', '', `<button><span class="mono">${p.w.n}</span><span class="t">${p.w.label}</span></button>`);
       li.firstChild.onclick = () => this.enterWorld(p.i);
       li.firstChild.onmouseenter = () => { this.hoverRail = p.i; };
       li.firstChild.onmouseleave = () => { this.hoverRail = -1; };

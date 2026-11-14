@@ -281,6 +281,10 @@ body.mv-world .rail:hover { opacity: 1; }
 .gal-text .sub .fa { letter-spacing: 0; text-transform: none; display: inline; font-size: 12px; }
 .gal-text .fa { display: block; text-align: right; line-height: 2; }
 .gal-text .count { font-size: 11px; color: var(--accent); letter-spacing: .1em; }
+.gal-group { display: flex; align-items: baseline; gap: 12px; margin: 26px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-weight: 300; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg); }
+.gal-group:first-child { margin-top: 0; }
+.gal-group .fa { letter-spacing: 0; text-transform: none; font-size: 14px; color: var(--mute); }
+.wall + .gal-group { margin-top: 30px; }
 .wall { columns: 3 240px; column-gap: 10px; }
 .tile { position: relative; display: block; width: 100%; margin: 0 0 10px; break-inside: avoid; border-radius: 6px; overflow: hidden; background: #111; opacity: 0; animation: tileIn .8s var(--ease) forwards; }
 @keyframes tileIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }

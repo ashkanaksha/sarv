@@ -1,4 +1,4 @@
-import { WORLDS } from './data.js';
+import { WORLDS, GROUPS } from './data.js';
 
 /* ── icons (1.25px stroke, 24 grid) ───────────────────────── */
 const s = (d, extra = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
@@ -193,8 +193,16 @@ export function openGallery(wi, opts = {}) {
   if (!w.media.length) {
     media.innerHTML = `<div class="gal-listen"><span class="ear">${ICON.soundOn}</span><p>Listen to the explanations :)</p>${fa('به توضیحات گوش بدین :)')}</div>`;
   } else {
-    const wall = el('div', 'wall');
+    const groups = [...new Set(w.media.map(m => m.group || ''))];
+    const multi = groups.length > 1;
+    let wall = null, cur = null;
     w.media.forEach((m, i) => {
+      const gname = multi ? (m.group || '') : '';
+      if (!wall || gname !== cur) {
+        cur = gname;
+        if (multi && gname) media.append(el('h3', 'gal-group', `<span>${GROUPS[gname] || gname}</span>${GROUPS[gname] ? fa(gname) : ''}`));
+        wall = el('div', 'wall'); media.append(wall);
+      }
       const b = el('button', 'tile' + (m.type === 'video' ? ' is-video' : ''));
       b.style.aspectRatio = `${m.w} / ${m.h}`;
       b.innerHTML = `<img loading="lazy" src="${m.type === 'video' ? m.thumb : (m.w > 700 || m.h > 700 ? m.thumb : m.src)}" alt="">` +
@@ -203,7 +211,6 @@ export function openGallery(wi, opts = {}) {
       b.style.animationDelay = `${Math.min(i, 24) * 35}ms`;
       wall.append(b);
     });
-    media.append(wall);
   }
   $('.gal-close', g).onclick = closeGallery;
   $('.gal-prev', g).onclick = () => galleryStep(-1);

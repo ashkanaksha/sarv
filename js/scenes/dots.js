@@ -103,7 +103,7 @@ export default {
     this.labels = new Labels($('#dotLabels'));
     this.nodes.forEach((nd, i) => {
       const w = WORLDS[i];
-      nd.label = this.labels.add(`<span class="n mono">${w.n}${w.year ? ' · ' + w.year : ''}</span><span class="t">${w.en}</span>`, 'nl', () => this.focusNode(i));
+      nd.label = this.labels.add(`<span class="n mono">${w.n}${w.year ? ' · ' + w.year : ''}</span><span class="t">${w.label}</span>`, 'nl', () => this.focusNode(i));
     });
     this.edges.forEach(ed => { ed.label = this.labels.add(`${ed.k}<span class="sep">·</span>${fa(ed.kFa)}`, 'el'); });
     this.endLabels = [

@@ -27,7 +27,7 @@ export default {
       this.slots.push(new THREE.Vector3(cx, cy, 0));
       let d;
       if (w.heroItem) d = sampleImage(await loadImage(w.heroItem.thumb), PER, 6.4, 4.4, { depth: 1 });
-      else d = sampleMask(textCanvas([{ text: 'Phase 2', font: '300 200px Inter', y: 0.5 }], { width: 1200, height: 420 }), PER, 5, 2);
+      else d = sampleMask(textCanvas([{ text: 'Sadra', font: '300 220px Inter', y: 0.5 }], { width: 1200, height: 420 }), PER, 5, 2);
       for (let k = 0; k < PER; k++) {
         const q = i * PER + k;
         pos[q * 3] = d.pos[k * 3] + cx; pos[q * 3 + 1] = d.pos[k * 3 + 1] + cy; pos[q * 3 + 2] = d.pos[k * 3 + 2];
@@ -66,7 +66,7 @@ export default {
     });
 
     this.labels = new Labels($('#finLabels'));
-    this.lbl = WORLDS.map((w, i) => this.labels.add(`<span class="n mono">${w.n}</span><span class="t">${w.en}</span>`, 'fl', () => openGallery(i)));
+    this.lbl = WORLDS.map((w, i) => this.labels.add(`<span class="n mono">${w.n}</span><span class="t">${w.label}</span>`, 'fl', () => openGallery(i)));
     this.labelAlpha = 0; this.labelMode = 'images';
     $('#btnReplay').onclick = () => this.run();
     $('#insta .ig').innerHTML = ICON.insta;
